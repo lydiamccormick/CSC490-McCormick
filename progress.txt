@@ -4,6 +4,7 @@ I do not know how to make a web app, but I am actively working on it.
 
 TODO:
 - figure out what languages I will need and how they work together
+- land on idea
 
 DOING:
 - learning HTML
