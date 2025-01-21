@@ -1,0 +1,11 @@
+A task management system with following functionalities, a webapp
+1. Users, groups
+2.  Tasks, each task is associated with value/scoring. Tasks can have subtasks, 
+3. Each task should have a memo
+4. Task has deadlines
+5. That implies a calender gadget
+6. Badges and rewards for users, leaderboard
+
+Ques
+1. What tool you will use to build.
+2. how do you host it 
