@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            background-color:rgb(186, 255, 225);
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+            margin: 15px;
+        }
+        input, select, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        #result {
+            font-size: 20px;
+            margin-top: 20px;
+            color: rgb(82, 106, 226); 
+        }
+        h1 {
+            font-size: 40px;
+            font-family:'Times New Roman', Times, serif;
+            color: brown;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to My Calculator</h1>
+    <h2>Input two numbers and choose your operator:</h2>
+    <hr>
+
+    <!-- Calculator Form -->
+    <div>
+        <p>Input your first number:</p>
+        <input type="number" id="num1" placeholder="Enter first number">
+
+        <p>Input your second number:</p>
+        <input type="number" id="num2" placeholder="Enter second number">
+
+        <p>Select an operation:</p>
+        <select id="operator">
+            <option value="add">Add</option>
+            <option value="subtract">Subtract</option>
+            <option value="multiply">Multiply</option>
+            <option value="divide">Divide</option>
+        </select>
+
+        <br><br>
+        <button onclick="calculate()">Calculate</button>
+    </div>
+
+    <!-- Result Display -->
+    <div id="result"></div>
+
+    <!-- JavaScript -->
+    <script>
+        function calculate() {
+            // Get user inputs
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const operator = document.getElementById('operator').value;
+
+            // Check if inputs are valid numbers
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById('result').textContent = "Please enter valid numbers.";
+                return;
+            }
+
+            // Perform the calculation
+            let result;
+            if (operator === 'add') {
+                result = num1 + num2;
+            } else if (operator === 'subtract') {
+                result = num1 - num2;
+            } else if (operator === 'multiply') {
+                result = num1 * num2;
+            } else if (operator === 'divide') {
+                if (num2 === 0) {
+                    document.getElementById('result').textContent = "Cannot divide by zero!";
+                    return;
+                }
+                result = num1 / num2;
+            }
+
+            // Display the result
+            document.getElementById('result').textContent = `Result: ${result}`;
+        }
+    </script>
+</body>
+</html>
