@@ -1,9 +1,9 @@
-A task management system with following functionalities, a webapp
+A task management system with following functionalities, a web app
 1. Users, groups
 2.  Tasks, each task is associated with value/scoring. Tasks can have subtasks, 
 3. Each task should have a memo
 4. Task has deadlines
-5. That implies a calender gadget
+5. That implies a calendar gadget
 6. Badges and rewards for users, leaderboard
 
 Questions
