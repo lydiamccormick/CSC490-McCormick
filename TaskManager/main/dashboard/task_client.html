@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script>
+        let page = "DASHBOARD";
+        document.addEventListener("DOMContentLoaded", () => {
+            document.title = page;
+            document.querySelector("h1").textContent = page;
+        });
+      </script>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>page</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  </head>
+  <style>
+    body {
+        background-color: rgb(255, 255, 255);
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    h1 {
+        font-size: 20px;
+        text-align:center;
+    }
+.header {
+  background-color: #b9d0ff;
+  border: 1px solid rgb(0, 0, 0);
+  overflow: hidden;
+}
+.header a {
+  float: left;
+  color: #000000;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.header a:hover {
+  background-color: #93b5f7;;
+  color: black;
+}
+.header a.active {
+  background-color: #93b5f7;
+  color: rgb(0, 0, 0);
+}
+  </style>
+  <body>
+    <div class="header">
+        <a class="active" href="#dashboard">Dashboard</a>
+        <a href="#calendar">Calendar</a>
+        <a href="#journal">Journal</a>
+        <a href="#achievements">Achievements</a>
+      </div>
+    <main>
+        <h1>page</h1>  
+        <hr>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>
