@@ -1,0 +1,40 @@
+A task management system with following functionalities, a web app
+
+Milestone 1:
+(Done) tech stack choice.
+(Done) skeleton project
+UI design/ workflow. 
+developing the backend of the application, including the database
+Users
+Tasks. User can create task, can see their task, can complete their task
+structures and logic needed to implement all of my project requirements.
+
+Milestone 2:
+Calender
+User can see their task on a calender.
+frontend and integrating it with the backend
+Groups
+User can join groups.
+Date
+
+Milestone 3:
+unit tests and make sure that everything is
+working in the way it is intended
+
+Milestone 4:
+Add accounts mechanism (login with password)
+
+Milestone 5:
+deploy the application 
+
+TODO
+1. Users, groups
+2.  Tasks, each task is associated with value/scoring. Tasks can have subtasks, 
+3. Each task should have a memo
+4. Task has deadlines
+5. That implies a calendar gadget
+6. Badges and rewards for users, leaderboard
+
+Questions
+1. What tool you will use to build. (which one is best for the things you want to build)
+2. how do you host it (localhost, or on production server)
