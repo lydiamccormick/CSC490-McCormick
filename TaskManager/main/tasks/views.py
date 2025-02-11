@@ -17,5 +17,5 @@ def generate_ics(request):
 
     response = HttpResponse(str(calendar), content_type="text/calendar")
     response['Content-Disposition'] = 'attachment; filename="tasks.ics"'
-    return response
+    return response 
 
