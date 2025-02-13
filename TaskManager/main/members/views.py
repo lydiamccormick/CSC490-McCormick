@@ -1,8 +1,9 @@
 from django.shortcuts import render
 
+# Create your views here.
 from django.http import HttpResponse
 from django.template import loader
-from members.models import Member
+from .models import Member
 
 def members(request):
   mymembers = Member.objects.all().values()

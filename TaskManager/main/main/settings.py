@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     "achievements",
     "cal",
     "dashboard",
-    "tasks"
+    "tasks",
+    "members"
 
 ]
 
