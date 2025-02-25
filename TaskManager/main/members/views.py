@@ -11,4 +11,4 @@ def members(request):
   context = {
     'mymembers': mymembers,
   }
-  return HttpResponse(template.render(context, request))
+  return HttpResponse(template.render(context, request)) 
