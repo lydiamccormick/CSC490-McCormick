@@ -6,6 +6,7 @@ from django.template import loader
 from .models import Member
 from datetime import datetime
 from .forms import CreateAccount
+from .forms import SignIn
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 
@@ -30,4 +31,9 @@ def signup(request):
             return redirect("/")
     else:
         form = CreateAccount()
-    return render(request, "newuser/signup.html", {"form": form}) 
+    return render(request, "newuser/signup.html", {"form": form})
+
+#def signin(request):
+#     if request.method == "POST":
+#        form = SignIn(request.POST)
+#        if form.is_valid():

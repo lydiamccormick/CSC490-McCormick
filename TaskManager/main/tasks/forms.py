@@ -7,4 +7,4 @@ class TaskForm(ModelForm):
         fields = '__all__'
         widgets = {
             'description': Textarea()
-        }
+        } 

@@ -19,7 +19,7 @@ def members(request):
 
 def tasks(request):
   mytasks = Task.objects.all().values()
-  template = loader.get_template('all_tasks.html')
+  template = loader.get_template('new.html')
   context = {
     'mytasks': mytasks,
   }
