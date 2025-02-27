@@ -5,13 +5,17 @@ A task management system with following functionalities, a web app
 Milestone 1:
 (Done) tech stack choice.
 (Done) skeleton project
-UI design/ workflow. 
-(starting) developing the backend of the application, including the database
-Users
-(starting, have model) Tasks. User can create task, can see their task, can complete their task
+(DOING) UI design/ workflow. 
+(DONE) started developing the backend of the application, including the database
+(DONE) Users creation, login, they can see their list of tasks. 
+User name, password, restrictions.
+(DONE) Back-end of Tasks. User can create task, can see their task, can complete their task
+Front end of tasks.
 structures and logic needed to implement all of my project requirements.
 
 Milestone 2:
+Navigation bar 
+Dashboard (when user login)
 Calender
 User can see their task on a calender.
 frontend and integrating it with the backend
