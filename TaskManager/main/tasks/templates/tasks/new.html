@@ -1,0 +1,21 @@
+<!--  {% extends "home.html" %} --> 
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Tasks</h1>
+
+{% block title %} Create Task {% endblock %}
+{% block content %}
+<h> Create a Task </h>
+<form method="task">
+    <table>
+        {{form}}
+    </table>
+    {% csrf_token %} <!-- security --> 
+    <button type="submit">Create</button>
+</form>
+{% endblock %}
+
+</body>
+</html>

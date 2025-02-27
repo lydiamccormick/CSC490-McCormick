@@ -28,6 +28,6 @@ class Category(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="categories")
     tasks = models.ManyToManyField(Task, related_name="categories", blank=True)
 
-    def __str__(self):
+    def __str__(self): 
         return self.name
 

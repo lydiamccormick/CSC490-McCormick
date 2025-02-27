@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from ics import Calendar, Event
 from django.http import HttpResponse
 from django.template import loader
 from .models import Task
+from .forms import TaskForm
 
 def tasks(request):
   mytasks = Task.objects.all().values()
@@ -28,3 +29,11 @@ def generate_ics(request):
     response['Content-Disposition'] = 'attachment; filename="tasks.ics"'
     return response 
 
+def new(request):
+    if request.method == "POST":
+      form = TaskForm(request.POST)
+      form.save()
+      return redirect("/")
+    else:
+       form = TaskForm()
+    return render(request, "tasks/new.html", {"form": form})

@@ -18,11 +18,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views
+from members.views import signup
 
 urlpatterns = [
+    path('', views.home, name = 'home'),
     path("admin/", admin.site.urls),
     path("members/", views.members, name='members'),
+    path("newuser/", signup, name='newuser'),
     path("tasks/", views.tasks, name = 'tasks'),
+    path("new/", views.tasks, name = 'new'), # new form convention
     path("achievements/", views.achievements, name = 'achievements')
 ]
 
