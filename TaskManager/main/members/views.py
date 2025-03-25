@@ -33,7 +33,21 @@ def signup(request):
         form = CreateAccount()
     return render(request, "newuser/signup.html", {"form": form})
 
-#def signin(request):
-#     if request.method == "POST":
-#        form = SignIn(request.POST)
-#        if form.is_valid():
+def signin(request):
+    if request.method == "POST":
+        form = SignIn(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data["username"]
+            password = form.cleaned_data["password"]
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request, f"Welcome back, {username}!")
+                return redirect("/")
+            else:
+                messages.error(request, "Invalid username or password.")
+    else:
+        form = SignIn()
+    
+    return render(request, "currentuser/signin.html", {"form": form})
+

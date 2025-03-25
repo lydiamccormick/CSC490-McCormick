@@ -19,14 +19,19 @@ from django.contrib import admin
 from django.urls import path, include
 from . import views
 from members.views import signup
+from members.views import signin
+from tasks.views import new 
 
 urlpatterns = [
     path('', views.home, name = 'home'),
     path("admin/", admin.site.urls),
+    path("home/", views.dashboard, name = 'home'),
     path("members/", views.members, name='members'),
     path("newuser/", signup, name='newuser'),
+    path("currentuser/", signin, name='currentuser'),
     path("tasks/", views.tasks, name = 'tasks'),
-    path("new/", views.tasks, name = 'new'), # new form convention
-    path("achievements/", views.achievements, name = 'achievements')
+    path("tasks/new/", new, name = 'new'), # new form convention
+    path("achievements/", views.achievements, name = 'achievements'),
+    path("calendar/", views.calendar, name = 'calendar')
 ]
 

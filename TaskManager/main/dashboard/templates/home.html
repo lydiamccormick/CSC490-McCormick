@@ -1,1 +1,50 @@
-<h> Home </h>
+<!DOCTYPE html>
+<html>
+
+<div class="topnav">
+    <a class="active" href="home">Home</a>
+    <a href="tasks">Tasks</a>
+    <a href="calendar">Calendar</a>
+    <a href="achievements">Achievements</a>
+    <a href="currentuser">Sign In</a>
+    <a href="newuser">Sign Up</a>
+
+  </div>
+<style>
+  .topnav {
+    background-color: #8317ff;
+    overflow: hidden;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 107px;
+    text-decoration: none;
+    font-size: 20px;
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: #b7b4b4;
+    color: black;
+  }
+  
+  /* Add a color to the active/current link */
+  .topnav a.active {
+    background-color: #bc4108;
+    color: white;
+  }
+</style>
+
+<h1> Home </h1>
+
+<br>
+
+<button onclick="window.location.href='tasks';">Click Here for Task List</button>
+<button onclick="window.location.href='calendar';">Click Here for Calendar</button>
+<button onclick="window.location.href='achievements';">Click Here for Achievements</button>
+<button onclick="window.location.href='currentuser';">Click Here to Sign In</button>
+<button onclick="window.location.href='newuser';">Click Here to Sign Up</button>

@@ -2,13 +2,54 @@
 <html>
 <body>
 
+
+
 <h1>Tasks</h1>
-  
-<ul>
+
+
+<div class="task-list">
   {% for x in mytasks %}
-    <li>{{ x.title }}</li>
+    <div class="task-card">
+      <h3>{{ x.title }}</h3>
+      <p>{{ x.description }}</p>
+      <p><strong>Due Date:</strong> {{ x.due_date }}</p>
+      <p><strong>Point Value:</strong> {{ x.value }}</p>
+      <button>Task Complete</button>
+    </div>
   {% endfor %}
-</ul>
+</div>
+
+<style>
+  .task-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .task-card {
+    background-color: #ffc58e;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+  }
+
+  .task-card h3 {
+    margin-top: 0;
+    font-size: 1.5em;
+  }
+
+  .task-card p {
+    font-size: 1em;
+    margin: 5px 0;
+  }
+
+  .task-card strong {
+    font-weight: bold;
+  }
+</style>
+<br>
+<button onclick="window.location.href='new';">Click Here to Make a New Task</button>
+
 
 </body>
 </html>

@@ -5,8 +5,12 @@ from django.template import loader
 from members.models import Member
 from tasks.models import Task
 from achievements.models import Achievement
+from cal.models import CalendarDate
 
 def home(request):
+    return render(request, 'home.html') 
+
+def dashboard(request):
     return render(request, 'home.html') 
 
 def members(request):
@@ -19,7 +23,7 @@ def members(request):
 
 def tasks(request):
   mytasks = Task.objects.all().values()
-  template = loader.get_template('new.html')
+  template = loader.get_template('all_tasks.html')
   context = {
     'mytasks': mytasks,
   }
@@ -30,5 +34,13 @@ def achievements(request):
   template = loader.get_template('all_achievements.html')
   context = {
     'myachievements': myachievements,
+  }
+  return HttpResponse(template.render(context, request))
+
+def calendar(request):
+  mycalendar = CalendarDate.objects.all().values()
+  template = loader.get_template('calendar.html')
+  context = {
+    'mycalendar': mycalendar,
   }
   return HttpResponse(template.render(context, request))

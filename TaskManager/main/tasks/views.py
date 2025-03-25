@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect
-
+from django.shortcuts import render, redirect, get_object_or_404
 from ics import Calendar, Event
 from django.http import HttpResponse
 from django.template import loader
 from .models import Task
 from .forms import TaskForm
+
+
 
 def tasks(request):
   mytasks = Task.objects.all().values()
@@ -33,7 +34,7 @@ def new(request):
     if request.method == "POST":
       form = TaskForm(request.POST)
       form.save()
-      return redirect("/")
+      return redirect("/tasks")
     else:
        form = TaskForm()
-    return render(request, "tasks/new.html", {"form": form})
+    return render(request, "newtasks/new.html", {"form": form}) 

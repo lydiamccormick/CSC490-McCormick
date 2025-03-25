@@ -15,4 +15,4 @@ class Achievement(models.Model):
         return f"{self.title} (Priority: {self.value})"
 
     def __str__(self):
-        return self.title
+        return self.title 
