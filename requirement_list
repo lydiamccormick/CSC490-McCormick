@@ -8,7 +8,7 @@ Milestone 1:
 (DOING) UI design/ workflow. 
 (DONE) started developing the backend of the application, including the database
 (DONE) Users creation, login, they can see their list of tasks. 
-User name, password, restrictions.
+(DONE)User name, password, restrictions.
 (DONE) Back-end of Tasks. User can create task, can see their task, can complete their task
 Front end of tasks.
 structures and logic needed to implement all of my project requirements.
