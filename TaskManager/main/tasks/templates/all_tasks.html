@@ -1,8 +1,8 @@
-<!DOCTYPE html>
-<html>
-<body>
 
 
+{% extends "base.html" %}
+
+{%block content%}
 
 <h1>Tasks</h1>
 
@@ -14,7 +14,20 @@
       <p>{{ x.description }}</p>
       <p><strong>Due Date:</strong> {{ x.due_date }}</p>
       <p><strong>Point Value:</strong> {{ x.value }}</p>
-      <button>Task Complete</button>
+      {% if not x.completed %}
+        <form method="POST" action="{% url 'tasks:complete' x.id %}">
+          {% csrf_token %}
+          <input type="hidden" name="x_id" value="{{ x.id }}">
+          <button type="submit">Complete</button>
+        </form>
+      {% else %}
+        <p>Completed</p>
+      {% endif %}
+      <form method="POST" action="{% url 'tasks:delete' x.id %}">
+        {% csrf_token %}
+        <input type="hidden" name="x_id" value="{{ x.id }}">
+        <button type="submit">Delete</button>
+      </form>
     </div>
   {% endfor %}
 </div>
@@ -50,6 +63,6 @@
 <br>
 <button onclick="window.location.href='new';">Click Here to Make a New Task</button>
 
-
+{%endblock%}
 </body>
 </html>

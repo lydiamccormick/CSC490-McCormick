@@ -15,5 +15,6 @@ class CreateAccount(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2']
 
 class SignIn(AuthenticationForm):
-    def confirm_login_allowed(self,user):
-        pass
+    def confirm_login_allowed(self, user):
+        super().confirm_login_allowed(user)
+

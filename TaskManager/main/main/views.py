@@ -5,7 +5,9 @@ from django.template import loader
 from members.models import Member
 from tasks.models import Task
 from achievements.models import Achievement
-from cal.models import CalendarDate
+# from cal.models import CalendarDate
+from django.contrib.auth.decorators import login_required
+
 
 def home(request):
     return render(request, 'home.html') 
@@ -21,8 +23,9 @@ def members(request):
   }
   return HttpResponse(template.render(context, request))
 
+@login_required(login_url="/currentuser")
 def tasks(request):
-  mytasks = Task.objects.all().values()
+  mytasks = Task.objects.filter(user=request.user)
   template = loader.get_template('all_tasks.html')
   context = {
     'mytasks': mytasks,
@@ -37,10 +40,10 @@ def achievements(request):
   }
   return HttpResponse(template.render(context, request))
 
-def calendar(request):
-  mycalendar = CalendarDate.objects.all().values()
-  template = loader.get_template('calendar.html')
-  context = {
-    'mycalendar': mycalendar,
-  }
-  return HttpResponse(template.render(context, request))
+#def calendar(request):
+ # mycalendar = CalendarDate.objects.all().values()
+ # template = loader.get_template('calendar.html')
+ # context = {
+#    'mycalendar': mycalendar,
+ # }
+ # return HttpResponse(template.render(context, request))

@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-
-<html>
-<body>
+{%extends "base.html"%}
+{% block content %}
 
 <h1>New Account</h1>
 
 {% block title %} Create Account {% endblock %}
-{% block content %}
+
 <h> Create an Account </h>
 <form method="POST">
     {% csrf_token %}

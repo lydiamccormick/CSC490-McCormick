@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="topnav">
+        <a class="{% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">Home</a>
+        <a class="{% if request.path == '/tasks/' %}active{% endif %}" href="{% url 'tasks:index' %}">Tasks</a>
+        <a href="calendar">Calendar</a>
+        <a class="{% if request.path == '/achievements/' %}active{% endif %}" href="{% url 'achievements' %}">Achievements</a>
+        <a class="{% if request.path == '/currentuser/' %}active{% endif %}" href="{% url 'currentuser' %}">Sign In</a>
+        <a class="{% if request.path == '/newuser/' %}active{% endif %}" href="{% url 'newuser' %}">Sign Up</a>
+    </div>
+<style>
+.topnav {
+  background-color: #8317ff;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 107px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #b7b4b4;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #bc4108;
+  color: white;
+}
+</style>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
