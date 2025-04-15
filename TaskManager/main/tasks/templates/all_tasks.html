@@ -3,7 +3,7 @@
 {% extends "base.html" %}
 
 {%block content%}
-
+<div class = "tasks">
 <h1>Tasks</h1>
 
 
@@ -17,7 +17,7 @@
       {% if not x.completed %}
         <form method="POST" action="{% url 'tasks:complete' x.id %}">
           {% csrf_token %}
-          <input type="hidden" name="x_id" value="{{ x.id }}">
+          <input type="hidden" name="task_id" value="{{ x.id }}">
           <button type="submit">Complete</button>
         </form>
       {% else %}
@@ -25,18 +25,33 @@
       {% endif %}
       <form method="POST" action="{% url 'tasks:delete' x.id %}">
         {% csrf_token %}
-        <input type="hidden" name="x_id" value="{{ x.id }}">
+        <input type="hidden" name="task_id" value="{{ x.id }}">
         <button type="submit">Delete</button>
       </form>
     </div>
   {% endfor %}
 </div>
+<br>
+<button onclick="window.location.href='new';">Click Here to Make a New Task</button>
+</div>
 
 <style>
+  .tasks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1650px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
   .task-list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    max-width: 1650px;
+    margin: 0 auto;
+    padding: 20px;
   }
 
   .task-card {
@@ -60,8 +75,7 @@
     font-weight: bold;
   }
 </style>
-<br>
-<button onclick="window.location.href='new';">Click Here to Make a New Task</button>
+
 
 {%endblock%}
 </body>

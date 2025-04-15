@@ -1,2 +1,71 @@
-<h1> Calendar </h1>
+{% extends "base.html" %}
 
+{% block content %}
+<br>
+
+<div class="calendar-wrapper">
+    <div id='calendar'></div>
+  </div>
+
+<!-- FullCalendar JS -->
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.js'></script>
+<style>
+    .fc-event-title {
+      text-align: center;
+      width: 100%;
+    }
+
+  .calendar-wrapper {
+    max-width: 1650px;       
+    margin: 0 auto;       
+    padding: 20px;           
+  }
+
+  @media (max-width: 768px) {
+    .calendar-wrapper {
+      padding: 10px;
+      max-width: 100%;
+    }
+  }
+
+  </style>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const calendarEl = document.getElementById('calendar');
+
+    const calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      events: async function(fetchInfo, successCallback, failureCallback) {
+        try {
+          const response = await fetch('/calendar/calendar-data/');
+          const data = await response.json();
+
+          const events = data.flatMap(entry => {
+            return entry.tasks.map(task => {
+              const event = {
+                title: `${task.title} (${task.priority})`,
+                start: entry.date,
+                backgroundColor: task.color,
+                borderColor: task.color,
+                allDay: true,
+              };
+              if (task.color === 'yellow') {
+                event.textColor = 'black';
+              }
+              return event;
+            });
+          });
+
+          successCallback(events);
+        } catch (error) {
+          console.error('Failed to load calendar data:', error);
+          failureCallback(error);
+        }
+      }
+    });
+
+    calendar.render();
+  });
+</script>
+
+{% endblock %}

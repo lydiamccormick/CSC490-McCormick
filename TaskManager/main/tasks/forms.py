@@ -6,7 +6,7 @@ class TaskForm(ModelForm):
     class Meta:
         model = Task
         fields = '__all__'
-        exclude = ['user', 'completed']  
+        exclude = ['user', 'completed', 'calendar_date']  
         widgets = {
             'description': Textarea()
         } 

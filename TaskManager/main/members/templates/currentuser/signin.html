@@ -1,11 +1,12 @@
 {%extends "base.html"%}
 {% block content %}
 
-<h1>Access Your Account</h1>
+<div class="signin">
+  <h1>Access Your Account</h1>
 
-{% block title %} Log in to Your Account {% endblock %}
+    {% block title %} Log in to Your Account {% endblock %}
 
-<form method="POST">
+  <form method="POST">
     {% csrf_token %}
     <fieldset class="form-group">
         {{form}}
@@ -13,8 +14,50 @@
       <div class="form-group">
         <button class="btn btn-outline-info" type="submit">Log In</button>
       </div>
-</form>
+  </form>
+</div>
 {% endblock %}  
+<style>
+  .signin {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  }
+
+  .signin h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .signin h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    font-weight: normal;
+  }
+
+  .form-group {
+    margin-top: 1rem;
+  }
+
+  form input, form select, form textarea {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+  }
+</style>
+
+
 
 </body>
 </html>

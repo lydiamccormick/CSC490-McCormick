@@ -1,6 +1,40 @@
 {%extends "base.html"%}
 {% block content %}
+<style>
+    .achievements-wrapper {
+      max-width: 1650px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+  
+    .achievements-wrapper ul {
+      list-style-type: none;
+      padding: 0;
+    }
+  
+    .achievements-wrapper li {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+  </style>
 
+<div class="achievements-wrapper">
 <h1>Achievements</h1>
+    <ul>
+        {% for achievement in achievements %}
+        <li>
+            {% if achievement in user_achievements %}
+                <strong>{{ achievement.name }}</strong> - {{ achievement.description }}
+            {% else %}
+                {{ achievement.name }} - {{ achievement.description }}
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>No achievements available.</li>
+    {% endfor %}
+    </ul>
+
+</div>
+
 
 {%endblock%}

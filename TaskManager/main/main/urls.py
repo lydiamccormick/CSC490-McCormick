@@ -21,18 +21,19 @@ from . import views
 from members.views import signup
 from members.views import signin
 from members.views import signout
+from cal.views import calendar
 from tasks.views import new, delete
 
 urlpatterns = [
     path('', views.home, name = 'home'),
     path("admin/", admin.site.urls),
-    path("home/", views.dashboard, name = 'home'),
+    path("home/", views.dashboard, name = 'dashboard'),
     path("members/", views.members, name='members'),
     path("newuser/", signup, name='newuser'),
     path("currentuser/", signin, name='currentuser'),
     path("logout/", signout, name = 'logout'),
     path("tasks/", include('tasks.urls')),
-    path("achievements/", views.achievements, name = 'achievements'),
-    #path("calendar/", views.calendar, name = 'calendar')
+    path("achievements/", include('achievements.urls')),
+    path('calendar/', include('cal.urls'))
 ]
 

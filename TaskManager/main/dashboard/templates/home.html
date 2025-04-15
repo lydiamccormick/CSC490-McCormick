@@ -1,11 +1,23 @@
 {%extends "base.html"%}
 {% block content %}
 
+<div class="dashboard">
 <h1> Home </h1>
 {% if user.is_authenticated %}
   <p>{{ user.username }} signed in!</p>
 {% else %}
   <p>No user logged in.</p>
 {% endif %}
+
+<button onclick="window.location.href='logout';">Click Here to Sign Out</button>
+</div>
+
+<style>
+  .dashboard {
+  max-width: 1650px;       
+  margin: 0 auto;       
+  padding: 20px;  
+}
+</style>
 
 {%endblock%}

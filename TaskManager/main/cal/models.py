@@ -1,11 +1,27 @@
-# from django.db import models
-# from tasks.models import Task
+from django.db import models
+from django.utils import timezone
 
-# class CalendarDate(models.Model):
-#     task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name="calendar_events")
-#     due_date = models.DateTimeField() 
-#     title = models.CharField(max_length=255) 
-#     description = models.TextField(blank=True, null=True)
+class CalendarDate(models.Model):
+    date = models.DateField()
 
-#     def __str__(self):
-#         return self.title
+    def __str__(self):
+        return f"Calendar Date: {self.date}"
+
+    def get_task_events(self):
+        events = []
+        for task in self.tasks.all():
+            if task.completed:
+                color = 'green'
+            elif task.due_date and task.due_date < timezone.now():
+                color = 'red'
+            else:
+                color = 'yellow'
+
+            events.append({
+                'title': task.title,
+                'priority': task.value,
+                'color': color,
+                'due_date': task.due_date,
+            })
+        return events
+

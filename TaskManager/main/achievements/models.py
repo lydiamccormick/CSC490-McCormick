@@ -1,18 +1,32 @@
 from django.db import models
 from django.contrib.auth.models import User
+from tasks.models import Task
+from django.utils import timezone
 
-# Create your models here.
 class Achievement(models.Model):
-    VALUE_AWARDS = [(i, str(i)) for i in range(1, 6)]
-    title = models.CharField(max_length=255)
-    badgetype = models.TextField(blank=True, null=True)
+    name = models.CharField(max_length=255)
+    description = models.TextField(default="Completed a task.")
     earned = models.BooleanField(default=False)
-    earned_on = models.DateTimeField(auto_now_add=True)
-    value = models.PositiveIntegerField(choices=VALUE_AWARDS, default = 3)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="achievements")
+    earned_on = models.DateTimeField(default=timezone.now)
+    user = models.ManyToManyField(User, related_name='achievements', blank=True)
 
     def __str__(self):
-        return f"{self.title} (Priority: {self.value})"
+        return self.name
 
-    def __str__(self):
-        return self.title 
+
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+@receiver(post_save, sender=Task)
+def check_first_task_completed(sender, instance, created, **kwargs):
+    if instance.completed:
+        user = instance.user
+        first_achievement = Achievement.objects.get(name="First Task Completed")
+
+        # Check how many completed tasks the user has
+        completed_count = Task.objects.filter(user=user, completed=True).count()
+
+        # If this is their first completed task and they don’t have the achievement yet
+        if completed_count == 1 and not first_achievement.user.filter(id=user.id).exists():
+            first_achievement.user.add(user)
+            print(f"{user.username} earned their first achievement!")
