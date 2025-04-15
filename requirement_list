@@ -8,7 +8,7 @@ Milestone 1:
 (Done) UI design/ workflow. 
 (DONE) started developing the backend of the application, including the database
 (DONE) Users creation, login, they can see their list of tasks. 
-User name, password, restrictions.
+(DONE) User name, password, restrictions.
 (DONE) Back-end of Tasks. User can create task, can see their task, can complete their task
 (DONE)Front end of tasks.
 (DONE)structures and logic needed to implement all of my project requirements.
@@ -21,20 +21,20 @@ Milestone 2:
 (DONE)frontend and integrating it with the backend, a few tabs/functionalities are done. 
 (DONE) more work on tabs. 
 (TODO) SubTasks, Categories
-Groups
-group tasks assignment, group tasks viewed by user.
-User can join groups.
-Date
+group functionality
+(DOING) Groups
+(DOING) group tasks assignment, group tasks viewed by user.
+(DOING) User can join groups.
+(DONE) Date
 
 Milestone 3:
-unit tests and make sure that everything is
-working in the way it is intended
+(Skip) unit tests and make sure that everything is working in the way it is intended
 
 Milestone 4:
-(DONE)Add accounts mechanism (login with password)
+(DONE) Add accounts mechanism (login with password)
 
 Milestone 5:
-deploy the application 
+(maybe SKIP) deploy the application 
 
 TODO
 1. Users, groups
