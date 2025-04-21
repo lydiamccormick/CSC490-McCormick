@@ -1,21 +1,76 @@
 {%extends "base.html"%}
 {% block content %}
 
-<h1>New Account</h1>
+<div class="signin-container">
+  <div class="signin-card">
+    <h1>Sign Up</h1>
 
-{% block title %} Create Account {% endblock %}
-
-<h> Create an Account </h>
-<form method="POST">
-    {% csrf_token %}
-    <fieldset class="form-group">
-      <legend class="border-bottom mb-4">Join Task Management</legend>
-        {{form}}
-      </fieldset>
+    <form method="POST">
+      {% csrf_token %}
       <div class="form-group">
-        <button class="btn btn-outline-info" type="submit">Sign Up</button>
+        {{ form.as_p }}
       </div>
-</form>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">Sign Up</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+  .signin-container {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 10vh;
+    justify-content: center;
+    height: 100vh;
+    background-color: #ffffff;
+  }
+
+
+  .signin-card h1 {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 12px;
+    background-color: rgb(184, 121, 92);
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-transform: none;
+  }
+
+  .btn:hover {
+    background-color: #c0c0c0;
+    color: rgb(0, 0, 0);
+  }
+</style>
 {% endblock %}  
 
 </body>

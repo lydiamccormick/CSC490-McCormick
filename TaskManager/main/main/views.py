@@ -10,7 +10,31 @@ from django.contrib.auth.decorators import login_required
 
 
 def home(request):
-    return render(request, 'home.html') 
+    task_count = 0
+
+    if request.user.is_authenticated:
+        task_count = Task.objects.filter(
+            user=request.user,
+            completed=False
+        ).count()
+    task_list = []
+    task_list_completed = []
+    if request.user.is_authenticated:
+       task_list = Task.objects.filter(
+          user=request.user,
+          completed=False
+       )
+    if request.user.is_authenticated:
+       task_list_completed = Task.objects.filter(
+          user=request.user,
+          completed=True
+       )
+  
+    return render(request, 'home.html', {
+        'task_count': task_count,
+        'task_list': task_list,
+        'task_list_completed': task_list_completed,
+    }) 
 
 def dashboard(request):
     return render(request, 'home.html') 

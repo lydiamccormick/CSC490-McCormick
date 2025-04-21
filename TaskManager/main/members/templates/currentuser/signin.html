@@ -1,62 +1,83 @@
 {%extends "base.html"%}
 {% block content %}
 
-<div class="signin">
-  <h1>Access Your Account</h1>
+<div class="signin-container">
+  <div class="signin-card">
+    <h1>Sign In</h1>
 
-    {% block title %} Log in to Your Account {% endblock %}
-
-  <form method="POST">
-    {% csrf_token %}
-    <fieldset class="form-group">
-        {{form}}
-      </fieldset>
+    <form method="POST">
+      {% csrf_token %}
       <div class="form-group">
-        <button class="btn btn-outline-info" type="submit">Log In</button>
+        <label for="username">Username:</label>
+        {{ form.username }}
       </div>
-  </form>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        {{ form.password }}
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">Sign In</button>
+      </div>
+    </form>
 </div>
-{% endblock %}  
+</div>
+
 <style>
-  .signin {
-    max-width: 400px;
-    margin: 40px auto;
-    padding: 20px;
+
+  .signin-container {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 10vh; 
+    justify-content: center;
+    height: 100vh;
+    background-color: #ffffff;
+  }
+
+  .signin-card h1 {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 20px;
     text-align: center;
-    background-color: #f8f9fa;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-  }
-
-  .signin h1 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .signin h2 {
-    font-size: 1.25rem;
-    margin-bottom: 1.5rem;
-    font-weight: normal;
   }
 
   .form-group {
-    margin-top: 1rem;
+    margin-bottom: 20px;
+    text-align: left;
   }
 
-  form input, form select, form textarea {
+  .form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  .form-group input {
     width: 100%;
-    margin-top: 0.5rem;
     padding: 10px;
-    border-radius: 6px;
+    font-size: 1rem;
     border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
   }
 
-  button {
+  .btn {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
+    background-color: rgb(184, 121, 92);
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-transform: none;
   }
-</style>
 
+  .btn:hover {
+    background-color: #c0c0c0;
+    color: rgb(0, 0, 0);
+  }
+
+</style>
+{% endblock %}  
 
 
 </body>

@@ -2,13 +2,63 @@
 {% block content %}
 
 <div class="dashboard">
-<h1> Home </h1>
 {% if user.is_authenticated %}
-  <p>{{ user.username }} signed in!</p>
+  <h1> Welcome,
+  {{ user.username }}
+  ! </h1>
 {% else %}
-  <p>No user logged in.</p>
+  No user logged in. 
+  <button onclick="window.location.href='currentuser';">Click Here to Sign In</button>
 {% endif %}
 
+<p>
+  You have {{ task_count }} active task{{ task_count|pluralize }}.
+</p>
+
+<h1>
+  Achievement Goal:
+</h1>
+
+<br>
+<p>
+  Current Goal: Complete 20 Achievements
+</p>
+<div class="progress-bar-container">
+  <div class="progress-bar-fill" style="width: 80%;"></div>
+</div>
+<br>
+<h1>
+  Upcoming Tasks:
+</h1>
+<br>
+<div class="task-container">
+  {% for task in task_list %}
+  <div class="task-card">
+  <h3>{{ task.title }}</h3>
+  <p><strong>Due Date:</strong> {{ task.due_date }}</p>
+  <p><strong>Point Value:</strong> {{ task.value }}</p>
+  </div>
+  {% empty %}
+    <p>No active tasks.</p>
+  {% endfor %}
+</div>
+<br>
+<h1>
+  Tasks Recently Completed:
+</h1>
+<br>
+<div class="task-container">
+  {% for task in task_list_completed %}
+  <div class="task-card">
+    <h3>{{ task.title }}</h3>
+  <p><strong>Due Date:</strong> {{ task.due_date }}</p>
+  <p><strong>Point Value:</strong> {{ task.value }}</p>
+  </div>
+  {% empty %}
+    <p>No completed tasks yet.</p>
+  {% endfor %} 
+</div>
+<br>
 <button onclick="window.location.href='logout';">Click Here to Sign Out</button>
 </div>
 
@@ -17,7 +67,55 @@
   max-width: 1650px;       
   margin: 0 auto;       
   padding: 20px;  
-}
+  }
+
+  .task-card {
+    background-color: #ffc58e;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .task-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; 
+    margin-top: 20px;
+  }
+
+  .progress-bar-container {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 20px;
+    margin-bottom: 10px;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    background-color: #4caf50; 
+    transition: width 0.4s ease-in-out;
+  }
+
+  .progress-bar-container {
+    width: 100%;
+    max-width: 1600px;
+    height: 25px;
+    background-color: #e0e0e0;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    background-color: rgb(131, 228, 151);
+    transition: width 0.5s ease-in-out;
+  }
+
 </style>
 
 {%endblock%}
